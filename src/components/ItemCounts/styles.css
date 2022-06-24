@@ -1,0 +1,71 @@
+.contenedor{
+    background-color: rgb(238, 238, 238);
+    border: 10;
+    border-color: black;
+    height: 250;
+    width: 250px;  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 3px;
+}
+.camis{
+    text-align: left;
+    align-items: flex-start;
+    padding-left: 0;
+    justify-content: start;
+    margin-top: 2px;
+}
+.area{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    width: 200px;
+    height: 40px;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 5px;
+
+    border-color: rgb(105, 105, 105);
+
+}
+
+.signo{
+    color: rgb(108, 203, 216);
+    font-size: 25px;
+    background-color: white;
+    border: 0px;
+
+}
+
+.cuenta{
+    color: black;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+
+.titulo{
+    width: 200px;
+}
+
+.agregarCarro{
+    margin-top: 12px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border-color: rgb(147, 221, 231);
+    width: 200px;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.fuente{
+    color: turquoise;
+    font-weight: 800;
+    align-items: center;
+    justify-content: center;
+} 
