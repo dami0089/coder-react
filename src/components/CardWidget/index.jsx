@@ -5,7 +5,7 @@ import { ImCart } from "@react-icons/all-files/im/ImCart";
 
 const CardWidget = () => {
     return (
-        <ImCart classname = "formato" size={50}/>
+        <ImCart className = "formato" size={50}/>
     )
 }
 
