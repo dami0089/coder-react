@@ -1,5 +1,5 @@
 import React, {useEffect, useState}  from 'react';
-import ItemList from '../../itemList';
+import ItemList from '../../components/itemList';
 // import yerba from '../../../assets/yerba.jpeg'
 
 const ItemListContainer = ({greeting}) => {
@@ -9,10 +9,11 @@ const ItemListContainer = ({greeting}) => {
     useEffect(()=>{
         const getProductos = async() => {
             try {
-                const response = await fetch('/mocks/data.json');
+                const response = await fetch('https://rickandmortyapi.com/api/character');
                 const data = await response.json();
                 console.log(data);
-                setProductos(data);
+                // var newData = this.state.data.concat([data]); 
+                setProductos([data]);
             } catch (error) {
                 console.log("Hubo un error: ");
                 console.log(error);

@@ -1,6 +1,7 @@
 import './App.css';
-import ItemListContainer from './components/containers/ItemListContainer';
+// import ItemListContainer from './containers/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
+import ItemDetailContainer from './containers/ItemListContainer/ItemdetailContainer';
 
 function App() {
   // let nombre = "Dami";
@@ -24,7 +25,8 @@ function App() {
 
       {/* {
         containerVisible ? */}
-        <ItemListContainer greeting = "Hola Coders!"/>
+        {/* <ItemListContainer greeting = "Hola Coders!"/> */}
+        <ItemDetailContainer/>
           {/* <h2>Este es el intem list container</h2> */}
        
         {/* : null          */}
