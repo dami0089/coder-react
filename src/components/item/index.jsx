@@ -23,7 +23,7 @@ const handleDetail = ()=> {
 
 
         <div className='contentBx'>
-            <h2>
+            <h2 className='tittle'>
             {product.title}
             </h2>
             <div class="size">
