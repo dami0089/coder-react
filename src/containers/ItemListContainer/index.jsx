@@ -1,68 +1,52 @@
 import React, {useEffect, useState}  from 'react';
 import ItemList from '../../components/itemList';
+import { useParams } from 'react-router-dom';
+import '../ItemListContainer/style.css'
 // import yerba from '../../../assets/yerba.jpeg'
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = ({ greeting }) => {
 
-    const [productos, setProductos] = useState(null);
-
-    useEffect(()=>{
-        const getProductos = async() => {
-            try {
-                const response = await fetch('https://rickandmortyapi.com/api/character');
-                const data = await response.json();
-                console.log(data);
-                // var newData = this.state.data.concat([data]); 
-                setProductos([data]);
-            } catch (error) {
-                console.log("Hubo un error: ");
-                console.log(error);
-            }
+    const [productos, setProductos] = useState([])
+    const [productosFiltrados, setProductosFiltrados] = useState([])
+  
+    const params = useParams()
+    
+    useEffect(() => {
+  
+      const getProductos = async () => {
+        try {
+          const response = await fetch('https://fakestoreapi.com/products');
+          const data = await response.json()
+          setProductos(data);
+          setProductosFiltrados(data);
+        } catch (error) {
+          console.log("Hubo un error:");
+          console.log(error);
         }
-
-        getProductos()
-    },[])
-
+      }
+      getProductos()
+    }, [])
+  
+    useEffect(() => {
+      if (params?.categoryId) {
+        const productosFiltrados = productos.filter(producto => producto.category === params.categoryId)
+        setProductosFiltrados(productosFiltrados)
+      } else {
+        setProductosFiltrados(productos)
+      }
+    }, [params, productos])
+  
     console.log(productos);
-
-
-
-// const [color, setColor] = useState("blue");
-
-
-// const cambiarColor = () => {
-//     if (color === "blue") setColor ("red")
-//     else setColor("blue");
-// }
-// useEffect(()=>{
-//     console.log("Se monto el componente")
-    
-// },[])
-// useEffect(()=>{
-//     console.log("Se monto/actualizo el componente")
-    
-// },[color])
-
-//     const onAdd = (count) =>{
-//         console.log (`Se agrego al carrito ${count} productos.`)
-//     }
-
-
-   return (
-        <div>
-            <p>{greeting}</p>
-            {productos ?
-            <ItemList products ={productos}/>
-            :
-            null
-            }
-            {/* <p>{color}</p> */}
-            {/* <button onClick={cambiarColor}> Cambiar el color a red</button> */}
-            {/* <img src={yerba} alt="yerba" height='500' width='500' /> */}
-            {/* <ItemCounts initial={1} stock = {10} onAdd ={onAdd}/> */}
-        </div>
-        
+  
+    return (
+      <div>
+        {productos.length !== 0 ?
+          <ItemList products={productosFiltrados} />
+          :
+          <p>Loading...</p>
+        }
+      </div>
     )
-}
-
-export default ItemListContainer 
+  }
+  
+  export default ItemListContainer

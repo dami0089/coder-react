@@ -7,6 +7,12 @@
   pointer-events: none;
 }
 
+body{
+  background: cornsilk;
+  
+  
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -30,10 +36,10 @@
 
 .container{
   display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vw;
-  align-items: center;
+  flex-direction: row;
+  /* width: 100vw;
+  height: 100vw; */
+  /* align-items: center; */
   
 }
 

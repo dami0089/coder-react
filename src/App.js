@@ -1,7 +1,11 @@
 import './App.css';
-// import ItemListContainer from './containers/ItemListContainer';
 import NavBar from './components/NavBar/NavBar';
-import ItemDetailContainer from './containers/ItemListContainer/ItemdetailContainer';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemListContainer from './containers/ItemListContainer';
+import NotFound from './components/NotFound/indes';
+import ItemDetailContainer from './containers/ItemdetailContainer';
+
+
 
 function App() {
   // let nombre = "Dami";
@@ -18,29 +22,18 @@ function App() {
   // }
 
   return (
-    <div className="container">
+    <BrowserRouter>
       <NavBar/>
-     
-      {/* <ItemListContainer greeting = "Hola Coders!"/> */}
-
-      {/* {
-        containerVisible ? */}
-        {/* <ItemListContainer greeting = "Hola Coders!"/> */}
-        <ItemDetailContainer/>
-          {/* <h2>Este es el intem list container</h2> */}
-       
-        {/* : null          */}
-      {/* } */}
-      
-      {/* <button onClick={onHideContainer}> Desmontar ItemListContainer</button>
-      <button onClick={onShowContainer}> Mostrarno ItemListContainer</button> */}
-
-      
-
-     
+      <Routes>
+        <Route path= '/' element={<ItemListContainer/>}></Route>
+        <Route path= '/category/:categoryId' element={<ItemListContainer/>}></Route>
+        <Route path= '/detail/:productId' element={<ItemDetailContainer/>}></Route>
+        <Route path= '*' element={<NotFound/>}></Route>
 
 
-    </div>
+      </Routes>
+    </BrowserRouter>
+    
   );
 }
 

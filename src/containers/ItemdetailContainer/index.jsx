@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import ItemDetail from '../../../components/ItemDetail'
+import { useParams } from 'react-router-dom'
+import ItemDetail from '../../components/ItemDetail'
 
 //obtener los datos de un producto especifico
 const ItemDetailContainer = () => {
@@ -7,11 +8,16 @@ const ItemDetailContainer = () => {
     const [productDetail, setProduct] = useState({})
     const [error,setError] = useState("")
 
+    const params = useParams();
+
+
+
+
     useEffect(()=>{
         const getProductos = async () => {
 
         try {
-            const response = await fetch('https://fakestoreapi.com/products/1')
+            const response = await fetch(`https://fakestoreapi.com/products/${params.productId}`)
             const data = await response.json();
             setProduct(data)
         } catch (error) {
@@ -19,11 +25,13 @@ const ItemDetailContainer = () => {
             setError(error.menssage)
         }
     }
+    getProductos()
 
-    },[])
+    },[params])
 
     return (
         <ItemDetail product={productDetail}/>
+        // <ItemDetail product={productDetail}/>
     )
 }
 
