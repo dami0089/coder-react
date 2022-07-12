@@ -8,7 +8,7 @@ const NavBar = () => {
     return (
         <header>
         <ul className="ancho">
-        <a href="https://peopleco.com.ar"><img src={logo} height = '65' width='200' alt="" /></a>
+        <a><Link to='/'><img src={logo} height = '65' width='200' alt="" /></Link></a>
         <li className="active"><Link to='/'>Home</Link></li>
         <li><Link to='/category/electronics'>Electronics</Link></li>
         <li><Link to='/category/jewelery'>Jewelery</Link></li>
