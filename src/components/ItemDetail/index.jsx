@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import ItemCounts from '../ItemCounts';
 import '../ItemDetail/style.scss'
 
 const ItemDetail = ({product}) => {
     console.log(product);
+    const stock = 11
+    const init = 1 
+    const [qtyAdded, setQtyAdded] = useState(0);
+
+    const handleConfirm = (qty) => {
+      setQtyAdded(qty)
+    }
+
+    const navigate = useNavigate();
+
+    const handleTerminate = () =>{
+      navigate('/cart')
+    }
+    
     return (
         // <div>
         //     <h1>{product.title}</h1>
@@ -48,10 +64,18 @@ const ItemDetail = ({product}) => {
         </div>
       </div>
       <div class="card__footer">
-        
+
+      {!qtyAdded ?
+      <ItemCounts onAdd={handleConfirm} product={product} stock={stock} initial={init}/>
+        :
+      <button onClick ={handleTerminate} className="agregarCarro">Terminar Compra</button>
+      
+      }
+
+{/*         
         <div class="action">
           <button type="button">Agregar Al Carrito</button>
-        </div>
+        </div> */}
       </div>
     </div>
   </main>

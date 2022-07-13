@@ -2,7 +2,7 @@ import React from 'react';
 // import yerba from '../../../assets/yerba.jpeg';
 import {useState} from 'react';
 import '../ItemCounts/styles.css'
-const ItemCounts = ({initial, stock, onAdd}) => {
+const ItemCounts = ({product,initial, stock, onAdd}) => {
 
     const [count,setCount] = useState(initial)
     const [mensaje, setMensaje] = useState("")
@@ -67,7 +67,7 @@ const ItemCounts = ({initial, stock, onAdd}) => {
     return (
         <div className="contenedor">
             <div className="titulo">
-                <p className="camisa">Camisa</p>
+                <p className="camisa">{product.title}</p>
             </div>
 
             <div className="area">
@@ -75,7 +75,7 @@ const ItemCounts = ({initial, stock, onAdd}) => {
                 <p className="cuenta">{count}</p>
                 <button onClick={handleAdd} className="signo">+</button>
             </div>
-                <button onClick={()=>onAdd(count)} className="agregarCarro"><p className="fuente">Agregar al Carrito</p></button> 
+                <button onClick={onAdd} className="agregarCarro"><p className="fuente">Agregar al Carrito</p></button> 
             <p className="camisa">{mensaje}</p>                    
         </div>
     )
